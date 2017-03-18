@@ -1,0 +1,17 @@
+version: '2'
+services:
+  minio:
+    container_name: nmd-minio
+    image: minio/minio
+    command: server /export
+
+  nginx:
+    container_name: nmd-nginx
+    build: ./nginx
+    links:
+      - minio
+    depends_on:
+      - minio
+    ports:
+      - "80:80"
+      - "443:443"
