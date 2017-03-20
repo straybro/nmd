@@ -4,6 +4,9 @@ services:
     container_name: nmd-minio
     image: minio/minio
     command: server /export
+    environment:
+      - MINIO_ACCESS_KEY=minioaccesskey
+      - MINIO_SECRET_KEY=miniosecretkey
 
   nginx:
     container_name: nmd-nginx
